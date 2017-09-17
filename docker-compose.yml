@@ -1,0 +1,16 @@
+version: "2"
+services:
+  nginx-proxy:
+     image: boilerplate-nginx
+     ports:
+     - "80:80"
+     volumes:
+     - /var/run/docker.sock:/tmp/docker.sock:ro
+  listina:
+    image: boilerplate-wp
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - "8001:80"
+    env_file:
+      - .env
