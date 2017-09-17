@@ -5,12 +5,14 @@
 * You need to configure local PHP interpreters in PhpStorm to be able to use Xdebug
 * Installing Xdebug chrome plugin is necessary
 
-//Build nginx proxy image
+#### Build nginx proxy image
 docker build -f Dockerfile.nginx -t boilerplate-nginx .
 
-//Build wp image
+#### Build wp image
 docker build -f Dockerfile.wp -t boilerplate-wp .
 
-//Xdebug build wp image
+#### Build wp image with Xdebug
+Replace ip with yours
+
 docker build --build-arg XDEBUG=true --build-arg XDEBUG_REMOTE_HOST=192.168.0.107 -f Dockerfile.wp -t boilerplate-wp .
 
