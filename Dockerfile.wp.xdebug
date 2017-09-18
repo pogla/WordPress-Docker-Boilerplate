@@ -1,0 +1,23 @@
+FROM wordpress:4.8.1-php7.0-apache
+
+COPY wp-config.php /usr/src/wordpress
+
+RUN { \
+        echo 'memory_limit=512M'; \
+        echo 'upload_max_filesize=100M'; \
+        echo 'post_max_size=105M'; \
+        echo 'max_execution_time=60'; \
+    } > /usr/local/etc/php/conf.d/php-app.ini
+
+#xdebug
+ARG XDEBUG
+ENV XDEBUG ${XDEBUG:-false}
+ARG XDEBUG_REMOTE_HOST
+ENV XDEBUG_REMOTE_HOST ${XDEBUG_REMOTE_HOST}
+RUN pecl install xdebug
+COPY ["php/php-ini.sh","/usr/local/bin"]
+
+#windows specific, remove this line if on linux or mac
+RUN sed -i -e 's/\r$//' /usr/local/bin/php-ini.sh
+
+RUN /usr/local/bin/php-ini.sh
