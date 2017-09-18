@@ -15,4 +15,3 @@ docker build -f Dockerfile.wp -t boilerplate-wp .
 Replace ip with yours
 
 docker build --build-arg XDEBUG=true --build-arg XDEBUG_REMOTE_HOST=192.168.0.107 -f Dockerfile.wp -t boilerplate-wp .
-
