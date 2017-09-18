@@ -16,7 +16,8 @@ ENV XDEBUG ${XDEBUG:-false}
 ARG XDEBUG_REMOTE_HOST
 ENV XDEBUG_REMOTE_HOST ${XDEBUG_REMOTE_HOST}
 RUN pecl install xdebug
-COPY ["php/php-ini.sh","/usr/local/bin"]
+
+COPY php-ini.sh /usr/local/bin
 
 #windows specific, remove this line if on linux or mac
 RUN sed -i -e 's/\r$//' /usr/local/bin/php-ini.sh
