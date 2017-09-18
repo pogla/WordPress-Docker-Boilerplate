@@ -16,7 +16,9 @@ Replace ip with yours
 docker build --build-arg XDEBUG_REMOTE_HOST=192.168.0.107 -f Dockerfile.wp.xdebug -t boilerplate-wp .
 
 ### WordPress starter theme
-Theme gets copied to themes directory. Rename it as you wish and run: `npm install` inside theme directory
+Theme gets copied to themes directory. Rename it as you wish and run: `yarn -i` inside theme directory
+
+Replace proxy in webpack.config.js
 
 #### Theme features
 * Webpack
@@ -24,3 +26,9 @@ Theme gets copied to themes directory. Rename it as you wish and run: `npm insta
 * Minify
 * Browsersync
 * Autoprefix
+
+#### Commands
+
+`npm run build`
+`npm run watch`
+`npm run production`
