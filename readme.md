@@ -5,15 +5,18 @@
 * Installing Xdebug chrome plugin is necessary
 
 #### Build nginx proxy image
-docker build -f Dockerfile.nginx -t boilerplate-nginx .
+`docker build -f Dockerfile.nginx -t boilerplate-nginx .`
 
 #### Build wp image
-docker build -f Dockerfile.wp -t boilerplate-wp .
+`docker build -f Dockerfile.wp -t boilerplate-wp .`
 
 #### Build wp image with Xdebug
 Replace ip with yours
 
-docker build --build-arg XDEBUG_REMOTE_HOST=192.168.0.107 -f Dockerfile.wp.xdebug -t boilerplate-wp .
+`docker build --build-arg XDEBUG_REMOTE_HOST=192.168.0.107 -f Dockerfile.wp.xdebug -t boilerplate-wp .`
+
+#### Start containers
+`docker-compose up -d`
 
 ### WordPress starter theme
 Theme gets copied to themes directory. Rename it as you wish and run: `yarn -i` inside theme directory
@@ -32,3 +35,6 @@ Replace proxy in webpack.config.js
 `npm run build`
 `npm run watch`
 `npm run production`
+
+Webpack: https://www.youtube.com/watch?v=IAWi-z-bblQ&feature=youtu.be
+Go to yourdomain.dev:3000 and start developing.

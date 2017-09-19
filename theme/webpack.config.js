@@ -35,7 +35,7 @@ const config = {
 	plugins: [
 		new ExtractTextPlugin('/css/[name].css'),
 		new BrowserSyncPlugin({
-		    proxy: 'wordpack.dev',
+		    proxy: 'boilerplate.dev',
 		    port: 3000,
 		    files: [
 		        '**/*.php'
