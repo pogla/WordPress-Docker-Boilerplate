@@ -11,11 +11,17 @@
 `docker build -f Dockerfile.wp -t boilerplate-wp .`
 
 #### Build wp image with Xdebug
-Replace ip with yours
 
-`docker build --build-arg XDEBUG_REMOTE_HOST=192.168.0.107 -f Dockerfile.wp.xdebug -t boilerplate-wp .`
+Replace ip with yours if on Windows
 
-#### Start containers
+For Mac run:
+
+`sudo ifconfig lo0 alias 10.254.254.254`
+
+`docker build --build-arg XDEBUG_REMOTE_HOST=10.254.254.254 -f Dockerfile.wp.xdebug -t primerjam-wp .`
+
+#### Start conteiners
+
 `docker-compose up -d`
 
 ### WordPress starter theme
