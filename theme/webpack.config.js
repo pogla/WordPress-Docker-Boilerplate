@@ -11,7 +11,7 @@ const config = {
   },
   output: {
     filename: 'js/[name].js',
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, 'public')
   },
   module: {
     rules: [
@@ -47,7 +47,7 @@ const config = {
   plugins: [
     new ExtractTextPlugin('/css/[name].css'),
     new BrowserSyncPlugin({
-      proxy: 'http://boilerplate.dev',
+      proxy: 'http://localhost:8012',
       port: 3000,
       tunnel: true,
       files: [
