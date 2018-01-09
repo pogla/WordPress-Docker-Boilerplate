@@ -47,7 +47,7 @@ const config = {
   plugins: [
     new ExtractTextPlugin('/css/[name].css'),
     new BrowserSyncPlugin({
-      proxy: 'http://localhost:8012',
+      proxy: 'http://boilerplate.dev',
       port: 3000,
       tunnel: true,
       files: [
