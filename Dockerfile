@@ -1,6 +1,7 @@
 FROM wordpress:4.8.1-php7.0-apache
 
-#COPY theme /usr/src/wordpress/wp-content/themes/theme
+COPY theme /usr/src/wordpress/wp-content/themes/theme
+COPY advanced-custom-fields-pro /usr/src/wordpress/wp-content/plugins/advanced-custom-fields-pro
 
 RUN { \
         echo 'memory_limit=512M'; \

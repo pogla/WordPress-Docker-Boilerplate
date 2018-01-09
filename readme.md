@@ -9,7 +9,7 @@
 ## Docker
 
 ### Build wp image
-`docker build -t boilerplate-wp .`
+`docker build -t boilerplate_wp .`
 
 ### Build wp image with Xdebug
 

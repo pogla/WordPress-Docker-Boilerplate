@@ -2,11 +2,11 @@ version: '2'
 services:
   wp:
     image: boilerplate_wp
-    container_name: boilerplate_wp_wp
+    container_name: boilerplate_wp
     links:
       - "db:mysql"
     ports:
-      - "XXXX:80"
+      - "8012:80"
     volumes:
       - ./src:/var/www/html
     restart: always
@@ -36,7 +36,7 @@ services:
         MYSQL_ROOT_PASSWORD: boilerplate_wp
       restart: always
       ports:
-        - "YYYY:80"
+        - "8011:80"
   wpcli:
        image: tatemz/wp-cli
        container_name: boilerplate_wp_wpcli
