@@ -1,7 +1,6 @@
 FROM wordpress:4.8.1-php7.0-apache
 
-COPY wp-config.php /usr/src/wordpress
-COPY theme /usr/src/wordpress/wp-content/themes/theme
+#COPY theme /usr/src/wordpress/wp-content/themes/theme
 
 RUN { \
         echo 'memory_limit=512M'; \
@@ -20,6 +19,6 @@ RUN pecl install xdebug
 COPY php-ini.sh /usr/local/bin
 
 #windows specific, remove this line if on linux or mac
-RUN sed -i -e 's/\r$//' /usr/local/bin/php-ini.sh
+#RUN sed -i -e 's/\r$//' /usr/local/bin/php-ini.sh
 
 RUN /usr/local/bin/php-ini.sh

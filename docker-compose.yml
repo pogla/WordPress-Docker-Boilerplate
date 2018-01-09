@@ -1,16 +1,50 @@
-version: "2"
+version: '2'
 services:
-  nginx-proxy:
-     image: boilerplate-nginx
-     ports:
-     - "80:80"
-     volumes:
-     - /var/run/docker.sock:/tmp/docker.sock:ro
-  listina:
-    image: boilerplate-wp
+  wp:
+    image: boilerplate_wp
+    container_name: boilerplate_wp_wp
+    links:
+      - "db:mysql"
+    ports:
+      - "XXXX:80"
     volumes:
       - ./src:/var/www/html
-    ports:
-      - "8001:80"
-    env_file:
-      - .env
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_PASSWORD: boilerplate_wp
+      WORDPRESS_DB_NAME: boilerplate_wp
+      WORDPRESS_DB_USER: boilerplate_wp
+  db:
+    image: mariadb:latest
+    container_name: boilerplate_wp_db
+    restart: always
+    volumes:
+      - ./db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: boilerplate_wp
+      MYSQL_USER: boilerplate_wp
+      MYSQL_DATABASE: boilerplate_wp
+      MYSQL_PASSWORD: boilerplate_wp
+  pma:
+      image: phpmyadmin/phpmyadmin
+      container_name: boilerplate_wp_pma
+      links:
+        - "db:db"
+      environment:
+        MYSQL_USERNAME: boilerplate_wp
+        MYSQL_ROOT_PASSWORD: boilerplate_wp
+      restart: always
+      ports:
+        - "YYYY:80"
+  wpcli:
+       image: tatemz/wp-cli
+       container_name: boilerplate_wp_wpcli
+       volumes_from:
+         - wp
+       links:
+         - db:mysql
+       entrypoint: wp
+       command: "--info"
+volumes:
+  db_data:

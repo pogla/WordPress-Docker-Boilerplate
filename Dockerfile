@@ -1,7 +1,6 @@
 FROM wordpress:4.8.1-php7.0-apache
 
-COPY wp-config.php /usr/src/wordpress
-COPY theme /usr/src/wordpress/wp-content/themes/theme
+#COPY theme /usr/src/wordpress/wp-content/themes/theme
 
 RUN { \
         echo 'memory_limit=512M'; \
